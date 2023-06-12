@@ -53,4 +53,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    gap: 0.5rem;
+
+    transition: color 0.5s, background-color 0.35s;
 }
+
+.sidebar footer a:hover {
+    background-color: var(--green-500);
+    color: var(--white);
+
+    transition: background-color, color 0.25s;
+    transition-timing-function: linear;
+}
+
+.userName{
+    color: var(--gray-100);
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+.userProfession{
+    font-size: 0.875rem;
+}
+
+
+
+
+
+
