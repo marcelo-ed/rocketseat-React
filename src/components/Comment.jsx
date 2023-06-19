@@ -6,6 +6,7 @@ export function Comment(){
 
 
         <div className={styles.comment}>
+
             <img className={styles.authorImage} src="https://github.com/marcelo-ed.png" />
 
             <div className={styles.commentBox}>
@@ -29,6 +30,7 @@ export function Comment(){
             <footer> <button><ThumbsUp />  likes <span>20</span></button></footer>
 
             </div>
+
 
 
         </div>

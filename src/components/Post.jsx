@@ -7,7 +7,9 @@ export function Post(){
             <header>
                     <div className={styles.author}>
                             
+
                             <img className={styles.authorImage} src="https://github.com/marcelo-ed.png" />
+
                             
                             
                             <div className={styles.authorInfo}>
