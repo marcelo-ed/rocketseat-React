@@ -1,5 +1,6 @@
 import styles from './Comment.module.css'
 import { ThumbsUp, Trash } from 'phosphor-react'
+import {Avatar} from './Avatar.jsx'
 
 export function Comment(){
     return(
@@ -7,7 +8,7 @@ export function Comment(){
 
         <div className={styles.comment}>
 
-            <img className={styles.authorImage} src="https://github.com/marcelo-ed.png" />
+            <Avatar className={styles.authorImage} src="https://github.com/marcelo-ed.png" />
 
             <div className={styles.commentBox}>
 
