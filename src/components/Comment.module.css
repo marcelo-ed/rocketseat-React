@@ -1,9 +1,10 @@
 .comment{
+    box-sizing: content-box;
     margin-top: 1.5rem;
     display: flex;
     gap: 1rem;
 
-
+    align-items: flex-start;
 }
 
 

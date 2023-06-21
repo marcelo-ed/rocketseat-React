@@ -2,8 +2,9 @@
 import styles from './Avatar.module.css'
 
 /* eslint-disable react/prop-types */
-export function Avatar(props){
+export function Avatar({className, src}){
     return(
-        <img className={props.className} src={props.src}  />
+        <img className={(className == 'authorImage' ) ?  styles.authorImage : styles.avatar } src={src}  />
+
     )
 }
