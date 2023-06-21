@@ -1,21 +1,21 @@
 import { Comment } from './Comment'
+import {Avatar} from    './Avatar'
 import styles from './Post.module.css'
+
 
 export function Post(){
     return (
         <article className={styles.post}>
             <header>
                     <div className={styles.author}>
-                            
+                        <Avatar className={styles.authorImage} src="https://github.com/marcelo-ed.png" />
 
-                            <img className={styles.authorImage} src="https://github.com/marcelo-ed.png" />
-
-                            
-                            
-                            <div className={styles.authorInfo}>
-                                    <strong className={styles.authorName}>Marcelo</strong>
-                                    <span className={styles.authorProfession}>Programmer Student</span>
-                            </div>
+                                
+                                
+                                <div className={styles.authorInfo}>
+                                        <strong className={styles.authorName}>Marcelo</strong>
+                                        <span className={styles.authorProfession}>Programmer Student</span>
+                                </div>
                     </div>
 
                 <time title='09/06/2023' dateTime='09-06-2023 às 14:34'> publicado há 3 meses</time>
