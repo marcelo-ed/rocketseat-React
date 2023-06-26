@@ -8,7 +8,7 @@ export function Comment(){
 
         <div className={styles.comment}>
 
-            <Avatar className={styles.authorImage} src="https://github.com/marcelo-ed.png" />
+            <Avatar className="authorImage" src="https://github.com/marcelo-ed.png" />
 
             <div className={styles.commentBox}>
 

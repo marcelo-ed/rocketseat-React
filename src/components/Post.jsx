@@ -1,14 +1,34 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/prop-types */
 import { Comment } from './Comment'
 import {Avatar} from    './Avatar'
 import styles from './Post.module.css'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from "date-fns/locale/pt-BR";
 
 
-export function Post(){
+
+
+    /* eslint-disable-next-line react/prop-types */
+export function Post({ author,  publishedAt, content  }){
+    const dataDePublicacao = new Intl.DateTimeFormat('pt-BR', {
+        day:   '2-digit',
+        month: '2-digit',
+        year: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+    }).format(publishedAt)
+
+    const dateRelativeToNow = formatDistanceToNow(publishedAt, {
+        locale: ptBR,
+        addSuffix: true
+    })
     return (
         <article className={styles.post}>
             <header>
                     <div className={styles.author}>
-                        <Avatar className={styles.authorImage} src="https://github.com/marcelo-ed.png" />
+                   { /* eslint-disable-next-line react/prop-types */}
+                        <Avatar className="authorImage"src={author.avatarUrl} />
 
                                 
                                 
@@ -18,16 +38,19 @@ export function Post(){
                                 </div>
                     </div>
 
-                <time title='09/06/2023' dateTime='09-06-2023 às 14:34'> publicado há 3 meses</time>
+                <time title={dataDePublicacao.replace(',', ' às ')} dateTime={publishedAt.toISOString()}>{dateRelativeToNow}</time>
             </header>
 
             <div className={styles.comment}>
-                    <p>Não sei exatamente o que colocar nesse comentário, então vou colocar algumas frases aleatórias que achar no google.</p>
-                    <p>Seja estranho. Seja aleatório. Seja quem você é. Porque você nunca sabe quem amaria a pessoa que você esconde.</p>
-                    <p>Um ato aleatório de bondade, por menor que seja, pode ter um tremendo impacto na vida de outra pessoa.</p>
-                    <p>O aleatório não existe, nosso cérebro sempre toma decisões mesmo que ocultas.</p>
-                    <p>A vida é um processo aleatório de incertezas que dependem do tempo. E o tempo? É uma máquina de estágios finitos composta por elementos interdependentes. Ou talvez seja apenas uma ilusão, e na verdade tudo ocorre simultaneamente e, portanto, estamos apenas parados em um ponto específico pensando que algo está mudando. <a href="../index.html"> #reflexões</a></p>
-                </div>
+                {content.map(line=>{
+                    if(line.type == "paragraph") {
+                        return(<p>{line.content}</p>)
+                    }   else if(line.type == "link"){
+                        return(<p><a href="#">{line.content}</a></p>)
+                    }
+                    }
+                )}
+            </div>
 
                 <form className={styles.commentForm}>
                     <strong>Deixe seu comentário aqui</strong>
