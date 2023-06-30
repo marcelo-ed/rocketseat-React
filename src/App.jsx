@@ -11,7 +11,7 @@ let posts = [
     id: 1,
     author: {
       avatarUrl: 'https://github.com/iotarjr.png',
-      name: 'marcelo-ed',
+      name: 'Iotar Junior',
       office: 'programmer student',
     },
     content: [
@@ -27,7 +27,7 @@ let posts = [
     id: 2,
     author: {
       avatarUrl: 'https://github.com/iotarjr.png',
-      name: 'marcelo-ed',
+      name: 'Iotar Junior',
       office: 'programmer student',
     },
     content: [
