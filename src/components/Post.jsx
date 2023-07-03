@@ -20,6 +20,8 @@ export function Post({ author,  publishedAt, content  }){
         minute: '2-digit',
     }).format(publishedAt)
 
+    const [likeCount, setLikeCount] = useState(0)
+
     const dateRelativeToNow = formatDistanceToNow(publishedAt, {
         locale: ptBR,
         addSuffix: true
@@ -33,6 +35,7 @@ export function Post({ author,  publishedAt, content  }){
 
 
     function changeCommentContent(){
+        event.target.setCustomValidity('')
         setNewCommentContent( event.target.value )
     }
 
@@ -45,9 +48,22 @@ export function Post({ author,  publishedAt, content  }){
         setNewCommentContent('')
     }
 
-    function deleteComment(comment){
-        console.log(`Deletar comentário ${comment}`)
+    function deleteComment(commentToDelete){
+        const commentListAfterTheDeletion = commentList.filter(comment=>{
+            return (comment !== commentToDelete) 
+        })
+        setCommentList(commentListAfterTheDeletion)
     }
+
+    function handleInvalidNewComment(){
+        event.target.setCustomValidity('Este campo é obrigatório')
+    }
+
+    function handleGiveALike(){
+        setLikeCount(likeCount.valueOf = 1)
+    }
+
+    const isNewCommentContentEmpty = newCommentContent == 0
 
     return (
         <article className={styles.post}>
@@ -82,10 +98,16 @@ export function Post({ author,  publishedAt, content  }){
 
                 <form onSubmit={addNewComment} className={styles.commentForm}>
                     <strong>Deixe seu comentário aqui</strong>
-                    <textarea onChange={changeCommentContent} placeholder='Clique aqui para comentar' value={newCommentContent} ></textarea>
+                    <textarea 
+                    onChange={changeCommentContent} 
+                    placeholder='Clique aqui para comentar' 
+                    value={newCommentContent}
+                    required
+                    onInvalid={handleInvalidNewComment}
+                    ></textarea>
 
                     <footer>
-                    <button type='submit'>Enviar</button>
+                    <button disabled={isNewCommentContentEmpty} type='submit'>Enviar</button>
                     </footer>
                 </form>
 
