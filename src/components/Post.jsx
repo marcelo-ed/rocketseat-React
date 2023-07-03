@@ -26,31 +26,28 @@ export function Post({ author,  publishedAt, content  }){
     })
 
     const [commentList, setCommentList] = useState([
-        "",
-        "",
-        ""
+        "comentário"
     ])
 
-const [newCommentContent, setNewCommentContent] = useState(
-    ""
-)
+    const [newCommentContent, setNewCommentContent] = useState("")
 
-const textarea = document.getElementsByClassName("textarea")
 
-function changeCommentContent(){
-    setNewCommentContent( event.target.value )
-    console.log(event.target.value)
-}
+    function changeCommentContent(){
+        setNewCommentContent( event.target.value )
+    }
 
-function addNewComment(){
-    event.preventDefault()
-    setCommentList(
-    [...commentList, newCommentContent]
-    )
-    console.log(textarea.value)
-    setNewCommentContent('')
-}
+    function addNewComment(){
+        event.preventDefault()
 
+        setCommentList(
+        [...commentList, newCommentContent]
+        )
+        setNewCommentContent('')
+    }
+
+    function deleteComment(comment){
+        console.log(`Deletar comentário ${comment}`)
+    }
 
     return (
         <article className={styles.post}>
@@ -93,10 +90,15 @@ function addNewComment(){
                 </form>
 
                 <div className={styles.commentList}>
-                    {commentList.map((comment, index)=> 
-                        {return <Comment content={comment} key={index}  />}
+                    {commentList.map((comment)=> 
+                        {return (
+                        <Comment  
+                        content={comment} 
+                        key={comment} 
+                        deleteComment={deleteComment}  
+                        />
                         )
-                    }
+                    })}
                 </div>
         </article>
     )
